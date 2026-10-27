@@ -1,4 +1,4 @@
-const BASE = 'http://localhost:3000/api';
+const BASE = 'https://izakaya-pixels.onrender.com';
 
 export async function api(path, body) {
   try {
