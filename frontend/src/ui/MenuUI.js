@@ -2,7 +2,7 @@ import { esc } from '../net.js';
 import { drawKitten } from './Kitten.js';
 
 // Pon aquí tu nombre para que aparezca bajo tu retrato en el menú de inicio (vacío = solo "AUTOR")
-const AUTHOR_NAME = '';
+const AUTHOR_NAME = 'Magochix';
 
 const show = (el) => { el.style.display = 'flex'; };
 const hide = (el) => { el.style.display = 'none'; };
@@ -39,7 +39,10 @@ export class MenuUI {
   setFs(on) { this.fs = on; if (this.title.style.display === 'flex') this.renderTitle(); }
 
   renderTitle() {
-    const cards = this.slots.map((s) => {
+    // Protección para asegurar que this.slots sea un arreglo válido y no truene
+    const slotsArray = Array.isArray(this.slots) ? this.slots : [];
+
+    const cards = slotsArray.map((s) => {
       if (!s.empty) {
         return `<div class="slot"><div class="slot-n">Slot ${s.slot}</div>
           <div class="slot-owner">Izakaya de<br><b>${esc(s.owner)}</b></div>
